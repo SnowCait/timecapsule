@@ -7,10 +7,12 @@
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
-    "hono": "^4.12.14"
+    "hono": "^4.12.14",
+    "rx-nostr": "^3.7.4"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
+    "nostr-typedef": "^0.13.0",
     "wrangler": "^4.84.1"
   }
 }
