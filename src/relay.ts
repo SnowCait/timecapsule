@@ -3,8 +3,7 @@ import { Event } from "nostr-typedef";
 import { createRxNostr, now } from "rx-nostr";
 
 export class Relay extends DurableObject {
-  fetch(request: Request): Response {
-    console.log(request);
+  fetch(): Response {
     const { 0: client, 1: server } = new WebSocketPair();
     this.ctx.acceptWebSocket(server);
     return new Response(null, { status: 101, webSocket: client });
@@ -76,7 +75,7 @@ export class Relay extends DurableObject {
       if (Number(publishAt) > _now) {
         continue;
       }
-      console.log(event);
+      console.log({ event });
       await this.ctx.storage.delete(key);
       rxNostr.send(event).subscribe({
         complete: async () => {
